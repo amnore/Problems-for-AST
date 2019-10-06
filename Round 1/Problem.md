@@ -9,7 +9,7 @@
 ## 样例输出：
     6
 
-## 解析
+## 解析：
 
 ![样例图](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/10/22/rainwatertrap.png)
 
