@@ -12,6 +12,7 @@
 ## 解析
 
 ![样例图](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/10/22/rainwatertrap.png)
+
 上面是由输入表示的高度图，在这种情况下，可以接 6 个单位的雨水（蓝色部分表示雨水）。
 
 ## 来源：
