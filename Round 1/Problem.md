@@ -7,6 +7,7 @@
     0 1 0 2 1 0 1 3 2 1 2 1
 
 ## 样例输出：
+
     6
 
 ## 解析：
@@ -16,5 +17,4 @@
 上面是由输入表示的高度图，在这种情况下，可以接 6 个单位的雨水（蓝色部分表示雨水）。
 
 ## 来源：
-Leetcode
-(https://leetcode-cn.com/problems/trapping-rain-water/)
+[Leetcode](https://leetcode-cn.com/problems/trapping-rain-water/)
