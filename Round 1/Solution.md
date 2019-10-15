@@ -6,6 +6,7 @@ But……
 Before we start……  
 有人说上周的数学题好像是作业题  
 ……
+
 ![](Images/S1.jpg)
 
 （我也没去查证……如果这是真的，大佬们求放过！！！  
@@ -17,7 +18,9 @@ Before we start……
 我们一开始的想法是，趁你们还没学夹逼准则  
 Hiahiahia  
 不过我们在没料到老师们推进神速
+
 ![](Images/S2.jpg)
+
 易知 $1 < 1 +\frac 1 2+\cdots+\frac 1 n < n$;  
 而 $\lim_{n \rightarrow \infty } \sqrt[n]{n}=\lim_{n\rightarrow\infty} 1 = 1$  
 根据夹逼准则  
