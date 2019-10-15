@@ -34,3 +34,6 @@ $\lim_{n\rightarrow\infty}a_n = 1$
 （令 $a_1 = b_n = 0$）  
 如果 $\min\{a_i,b_i\}>h_i$ 则第i根柱子能接的雨水量为：$\min\{a_i,b_i\}-h_i$，否则为0。  
 最后累加即可。
+
+参考实现与测试数据：
+<https://github.com/MrChenWithCapsule/2PHM-Solutions>
