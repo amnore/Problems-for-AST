@@ -8,7 +8,7 @@
 
 ## 题目一：不是那么简单的微积分
 
-设函数 $f(x)$ 定义于 $(a,+\infty)$ 上，且在每一个有限区间 $(a,b)$ 内是有界的。证明：  
+设函数 $f(x)$ 定义于 $(a,+\infty)$ 上，且在每一个有限区间 $(a,b)$ 内是有界的。假设下面等式两边极限均存在或为无穷大，证明：  
 $$\lim_{x\rightarrow+\infty} \frac {f(x)} x = \lim_{x\rightarrow+\infty} (f(x+1)-f(x))$$
 
 ## 题目二：愤怒的小鸟
@@ -68,7 +68,7 @@ Kiana 最近沉迷于一款神奇的游戏无法自拔。
 
 ### 来源
 
-NOIP2016 Day2 愤怒的小鸟  
+改编自 NOIP2016 Day2 愤怒的小鸟  
 <https://www.luogu.org/problem/P2831>
 
 ## 最后哆嗦一下
