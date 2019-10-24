@@ -3,7 +3,7 @@
         {
             "type": "shell",
             "label": "gcc build active file",
-            "command": "/usr/sbin/gcc",
+            "command": "/usr/sbin/g++",
             "args": [
                 "-g",
                 "${file}",
