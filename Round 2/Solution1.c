@@ -5,7 +5,10 @@
 #include <stdio.h>
 
 #define MAX_N 1000
+
+// 允许的误差值
 #define DELTA 1e-6
+
 #define max(a, b) (a > b ? a : b)
 bool my_equal(double a, double b)
 {

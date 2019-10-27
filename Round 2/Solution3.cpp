@@ -1,4 +1,4 @@
-// n <= 3000 时解法
+// n <= 3000 时解法，O(n^2)
 #include <algorithm>
 #include <cmath>
 #include <cstdio>
@@ -20,6 +20,8 @@ struct MyPair
 {
     double a;
     double b;
+
+    // 重载相等运算符
     friend bool operator==(MyPair p1, MyPair p2)
     {
         return my_equal(p1.a, p2.a) && my_equal(p1.b, p2.b);
@@ -37,6 +39,8 @@ MyPair getab(int i, int j)
     double k = xi2 * x[j] - xj2 * x[i];
     return MyPair{(x[j] * y[i] - x[i] * y[j]) / k, (xi2 * y[j] - xj2 * y[i]) / k};
 }
+
+// 实现哈希函数
 struct MyHash
 {
     using argument_type = MyPair;
@@ -47,6 +51,7 @@ struct MyHash
         return _hash(floor(pr.a / DELTA)) ^ _hash(floor(pr.b / DELTA));
     }
 };
+
 int main()
 {
     int n;
@@ -55,7 +60,8 @@ int main()
         std::cin >> x[i] >> y[i];
 
     std::unordered_map<MyPair, int, MyHash> m;
-    std::unordered_map<int, int> inv; // i * (i - 1) / 2 -> i
+    std::unordered_map<int, int> inv;
+    // 由对数反算只数
     for (int i = 1; i <= n; ++i)
         inv[i * (i - 1) / 2] = i;
 

@@ -1,4 +1,4 @@
-// n <= 2000 时解法
+// n <= 2000 时解法，O(n^2logn)
 #include <algorithm>
 #include <cmath>
 #include <cstdio>
@@ -24,10 +24,8 @@ struct MyPair
 {
     double a;
     double b;
-    friend bool operator==(MyPair p1, MyPair p2)
-    {
-        return my_equal(p1.a, p2.a) && my_equal(p1.b, p2.b);
-    }
+
+    // 重载小于运算符
     friend bool operator<(MyPair p1, MyPair p2)
     {
         return my_less(p1.a, p2.a) || (my_equal(p1.a, p2.a) && my_less(p1.b, p2.b));
@@ -59,7 +57,8 @@ int main()
         std::cin >> x[i] >> y[i];
 
     std::map<MyPair, int> m;
-    std::map<int, int> inv; // i * (i - 1) / 2 -> i
+    std::map<int, int> inv;
+    // 由对数反算只数
     for (int i = 1; i <= n; ++i)
         inv[i * (i - 1) / 2] = i;
 
