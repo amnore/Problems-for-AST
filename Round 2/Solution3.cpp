@@ -1,81 +1,37 @@
-// n <= 3000 时解法，O(n^2)
-#include <algorithm>
+#include <chrono>
 #include <cmath>
-#include <cstdio>
 #include <iostream>
-#include <unordered_map>
-
-#define MAX_N 3000
-#define DELTA 1e-6
-bool my_equal(double a, double b)
+using namespace std;
+const int maxh = 300017;
+const int maxn = 15000;
+double x[maxn], y[maxn], a, b;
+int hash_t[maxh] = {0};
+int n, cnt = 0, ans = 0;
+int getHash(double a, double b)
 {
-    return fabs(a - b) < DELTA;
+    long long k = a * 100000 * 7 + b * 999997 * 13;
+    if (k < 0)
+        k = -k - 1;
+    return k % maxh;
 }
-
-// 坐标 (x, y)
-double x[MAX_N], y[MAX_N];
-
-// 抛物线参数 (a, b)
-struct MyPair
-{
-    double a;
-    double b;
-
-    // 重载相等运算符
-    friend bool operator==(MyPair p1, MyPair p2)
-    {
-        return my_equal(p1.a, p2.a) && my_equal(p1.b, p2.b);
-    }
-};
-
-// 由 i, j 两只小猪的坐标计算 a, b
-MyPair getab(int i, int j)
-{
-    // i, j 的 x 坐标相同，舍去 (取 a > 0, 之后会忽略掉)
-    if (my_equal(x[i], x[j]))
-        return MyPair{1.0, 0.0};
-
-    double xi2 = x[i] * x[i], xj2 = x[j] * x[j];
-    double k = xi2 * x[j] - xj2 * x[i];
-    return MyPair{(x[j] * y[i] - x[i] * y[j]) / k, (xi2 * y[j] - xj2 * y[i]) / k};
-}
-
-// 实现哈希函数
-struct MyHash
-{
-    using argument_type = MyPair;
-    using result_type = std::hash<double>::result_type;
-    const std::hash<double> _hash;
-    result_type operator()(argument_type pr) const
-    {
-        return _hash(floor(pr.a / DELTA)) ^ _hash(floor(pr.b / DELTA));
-    }
-};
-
 int main()
 {
-    int n;
-    std::cin >> n;
-    for (int i = 0; i < n; ++i)
-        std::cin >> x[i] >> y[i];
-
-    std::unordered_map<MyPair, int, MyHash> m;
-    std::unordered_map<int, int> inv;
-    // 由对数反算只数
-    for (int i = 1; i <= n; ++i)
-        inv[i * (i - 1) / 2] = i;
-
-    for (int i = 0; i < n; ++i)
-        for (int j = i + 1; j < n; ++j)
+    cin >> n;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> x[i];
+        cin >> y[i];
+    }
+    for (int i = 0; i < n; i++)
+        for (int j = i + 1; j < n; j++)
         {
-            MyPair tmp = getab(i, j);
-            if (tmp.a > 0.0)
-                continue;
-            ++m[tmp]; // 将抛物线 (a, b) 在 map 中对应计数 +1
+            a = (y[i] * x[j] - y[j] * x[i]) / (x[i] * x[j] * (x[i] - x[j]));
+            b = (y[i] - a * x[i] * x[i]) / x[i];
+            if (a < 0.0)
+                hash_t[getHash(a, b)]++;
         }
-    int answer = 0;
-    for (auto &pr : m)
-        answer = std::max(inv[pr.second], answer);
-    std::cout << answer;
-    return 0;
+    for (int i = 0; i < maxh; i++)
+        if (hash_t[i] > cnt)
+            cnt = hash_t[i];
+    cout << (int)(1 + sqrt(1 + 8 * cnt)) / 2 << endl;
 }
