@@ -14,6 +14,32 @@
 
 上期微积分有一定难度，严谨起见，便直接附上专业解答
 
+$f(x)$ 为抽象函数，由）为抽象函数，由题设条件可知，只能考虑极限定义。
+
+(1) 设 
+$\lim_{x\rightarrow+\infty} (f(x+1)-f(x)) = A.$  
+任给 $\epsilon>0$，由极限定义可知必定存在正数 $X_0>a$，当 $x\ge X_0$ 时，总有
+$$|f(x+1)-f(x)-A|<\frac \epsilon 3.$$  
+设$x>X_0+1$，于是必定存在正整数$n$，使
+$$n \le x-X_0 < x+1,$$  
+令 $\tau = x-X_0-n$，则 $0\le\tau < 1,x=X_0+\tau+n.$  
+$$\frac {f(x)} x - A = \frac n x [\frac {f(x)-f(X_0+\tau)} n -A] + \frac {f(X_0 + \tau)} x -\frac {X_0+\tau} x A.$$  
+由于 $n<x$ ，可知
+$$|\frac n x [\frac {f(x)-f(X_0+\tau)} n -A]|\le |\frac {f(X_0+\tau+n)-f(X_0+\tau)} n -A|$$  
+$$= \frac 1 n |\sum_{k=1}^n [f(X_0+\tau+k)-f(X_0+\tau+k-1)-A]|$$  
+$$\le \frac 1 n \sum_{k=1}^n|f(X_0+\tau+k)-f(X_0+\tau+k-1)-A|$$  
+$$\le \frac 1 n \cdot \frac {n\epsilon} 3 = \frac \epsilon 3.$$  
+由题设知 $f(x)$ 在 $X_0\le x < X_0 +1$ 上有界，故存在正数 $X_1$ ，当 $x>X_1$ 时，总有
+$$|\frac {f(X_0+\tau)} x|<\frac \epsilon 3.$$  
+同样存在正数 $X_2$ ，当 $x>X_2$ 时，总有
+$$|\frac {(X_0+1)A} x|<\frac \epsilon 3,$$  
+令 $X=\max{X_0+1,X_1,X_2}$ ，可知当 $x>X$ 时，必有
+$$|\frac {f(x)} x -A| < \frac \epsilon 3 + \frac \epsilon 3 + \frac \epsilon 3 = \epsilon,$$  
+故
+$$\lim_{x\leftarrow+\infty} \frac {f(x)} x = A.$$
+
+(2) 
+
 原题上本没有“假设等式两侧极限均存在或无穷大”这个条件，但是我令f(x)=sin⁡x时出现了bug
 
 无奈之下我才加了这个条件，不过我自己很懵，所以如果有大佬明白这是怎么回事的话欢迎私戳学术墙教教我这个渣渣
