@@ -2,16 +2,21 @@
 #include <stdio.h>
 #define MAX_N 30000
 
+// frac[i] = i!
 int frac[MAX_N + 1] = {1};
+
 int nums[MAX_N];
 int ans[MAX_N];
 
+// Swap nums[a] with nums[b].
 void swap(int a, int b)
 {
     int nc = nums[a];
     nums[a] = nums[b];
     nums[b] = nc;
 }
+
+// Part nums[begin,...,end-1] recursively to find the Kth smallest number.
 void partition(int begin, int end, int k)
 {
     int pivot = (begin + end) / 2;
@@ -27,12 +32,15 @@ void partition(int begin, int end, int k)
     else
         partition(begin, i, k);
 }
+
+// Find the Kth smallest number in num[0,...,total-1], move it to the end, and return it.
 int Kth_smallest_num(int k, int total)
 {
     partition(0, total, k);
     swap(k - 1, total - 1);
     return nums[total - 1];
 }
+
 void find(int depth, int n, int k)
 {
     if (depth == n)
