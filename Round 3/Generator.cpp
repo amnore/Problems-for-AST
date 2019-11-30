@@ -27,7 +27,7 @@ int main(int argc, char const *argv[])
         {
             char sym = (i == 0 ? 'E' : 'H');
             std::ofstream fout{"Round 3/in/"s + sym + std::to_string(j) + ".txt"};
-            data[i][j].second = std::uniform_int_distribution<>{1, frac(data[i][j].first)}(re);
+            data[i][j].second = std::uniform_int_distribution<>{1, static_cast<int>(frac(data[i][j].first))}(re);
             fout << data[i][j].first << ' ' << data[i][j].second;
         }
     return 0;
