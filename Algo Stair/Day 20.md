@@ -51,12 +51,13 @@ int main()
     {
         int t;
         int k = 1;
-        arr[i].edges[0] = arr[i].parent;
+        arr[i].edges[0] = arr[i].parent;    // 添加父节点与子节点之间连的边
         for (int j = 0; j < 2; ++j)
         {
             cin >> t;
             if (t != -1)
             {
+                // 我在输入数据的同时也在进行第一次遍历，大家不要学我
                 arr[i].edges[k++] = t;
                 arr[t].parent = i;
                 arr[t].depth = arr[i].depth + 1;
@@ -68,7 +69,7 @@ int main()
             }
         }
     }
-    swap(arr[0].edges[0], arr[0].edges[1]);
+    swap(arr[0].edges[0], arr[0].edges[1]); // 两次魔法操作（其实是把根节点的两条边换到前面去）
     swap(arr[0].edges[1], arr[0].edges[2]);
     cout << 2 * (n - 1) - dfs(maxdi, 0, -1);
     // 以第一次找到的节点为根节点遍历，找到距离最大的节点；
