@@ -5,6 +5,7 @@
 2、对两边分别进行快速排序
 可以明显地看出这是递归的方式
 C/C++代码如下
+```c++
 void sort(int a[],int b,int e){//a为待排序数组，b=begin，e=end
     int i=b,j=e;
     int k=a[b];//k就是key值
