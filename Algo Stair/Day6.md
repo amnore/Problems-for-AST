@@ -1,4 +1,4 @@
-# Day6
+# D6
 
 这个长生不老的筒子看漫画很有特点--一本漫画必须在整数个小时内看完，而且非常专一--在单位时间内(小时)内不会看第二本书。
 
@@ -22,20 +22,21 @@ int main() {
   for (int i = 1; i < num + 1; i++) {
     scanf("%d", &page[i]);
     if (page[i] > max) {
-      max = page[i];
+      max = page[i];// 最多的书页
     }
   }
   int result = binary_search(1, max);
-  if (result > 0) {
+  // 在已知书页中寻找最佳页数，binarysearch如果能找到，找到也不一定最小
+  if (result > 0) {// 所以以防万一加个判断
     while (result > 1 && !judge(result - 1)) {
       result--;
     }  //确保找到最小的那个
     printf("%d\n", result);
-  } else {
+  } else {// 没找到，说明答案是不是书页中的某个数
     int trial = -result;
     int count1 = judge(trial + 1), count2 = judge(trial);
-    while (trial >= 1 && !(count1 > 0 && count2 < 0)) {
-      if (count2 > 0) {
+    while (trial >= 1 && !(count1 > 0 && count2 < 0)) {// >=1是防止出现1这种极端情况
+      if (count2 > 0) {// 暴力搜索
         trial--;
       } else {
         trial++;
@@ -44,7 +45,7 @@ int main() {
         break;
       }
       count1 = judge(trial + 1);
-      count2 = judge(trial);
+      count2 = judge(trial);// 一个大于0一个小于0说明已经夹逼到了确定的数值
     }
     printf("%d\n", trial + 1);
   }
@@ -75,6 +76,6 @@ int judge(int minpage) {
       count = count + page[i] / minpage + 1;
     }
   }
-  return leavetime - count;
+  return leavetime - count;// 返回用minpage算出来的时间与班长返回时间的差值
 }
 ```

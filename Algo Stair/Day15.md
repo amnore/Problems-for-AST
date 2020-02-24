@@ -1,4 +1,4 @@
-# Day15
+# D15
 
 这是一道深搜。只要不断地切割字符串，然后判断是否有不符合条件的数字存在，不符合条件就 return，最后自然会剩下一个解，输出即可。
 
@@ -17,15 +17,15 @@ void slice(char store[], int index, int sum);
 int main() {
   char store[100] = {0};
   scanf("%s", store);
-  slice(store, 0, 0);
+  slice(store, 0, 0);从0开始，当前一共0个
   return 0;
 }
 
 void slice(char store[], int index, int sum) {
-  if (flag) {
+  if (flag) {// 已经找到
     return;
   }
-  if (max == sum && (index > maxcapacity - 1 || !store[index])) {
+  if (max == sum && (index > maxcapacity - 1 || !store[index])) {// 找到了！
     for (int i = 0; i < sum - 1; i++) {
       printf("%d ", result[i]);
     }
@@ -34,23 +34,23 @@ void slice(char store[], int index, int sum) {
     return;
   }
   int count1 = 0;
-  for (int i = index; i < index + 1 && store[i]; i++) {
+  for (int i = index; i < index + 1 && store[i]; i++) {// 切一个，即下一个数为个位数
     count1 = count1 * 10 + store[i] - '0';
   }
   if (count1 && count1 <= maxsize && !state[count1]) {
-    int tmp = max;
+    int tmp = max;// 存储当前max值
     if (count1 > max) {
       max = count1;
     }
-    state[count1] = 1;
-    result[sum] = count1;
-    slice(store, index + 1, sum + 1);
-    if (flag) {
+    state[count1] = 1;// 改状态
+    result[sum] = count1;// 结果数组里边存储这个值
+    slice(store, index + 1, sum + 1);// 深搜
+    if (flag) {// 找到了！
       return;
     }
-    max = tmp;
-    state[count1] = 0;
-    result[sum] = 0;
+    max = tmp;// max恢复
+    state[count1] = 0;// 状态改回来
+    result[sum] = 0;// 结果数组扔掉这个值
   }
   int count2 = 0;
   for (int i = index; i < index + 2 && store[i]; i++) {

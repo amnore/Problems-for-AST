@@ -1,4 +1,4 @@
-# Day9
+# D9
 
 难得一见的水题。
 
@@ -62,7 +62,7 @@ void create_tree(node **pnode) {
   create_tree(&((*pnode)->right));
 }
 
-void print_tree_1(node *pnode, int *index) {
+void print_tree_1(node *pnode, int *index) {// 前序遍历
   if (!pnode) {
     store1[*index] = -1;
     (*index)++;
@@ -74,7 +74,7 @@ void print_tree_1(node *pnode, int *index) {
   print_tree_1(pnode->right, index);
 }
 
-void print_tree_2(node *pnode, int *index) {
+void print_tree_2(node *pnode, int *index) {// 后两个反过来的前序遍历
   if (!pnode) {
     store2[*index] = -1;
     (*index)++;

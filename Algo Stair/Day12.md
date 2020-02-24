@@ -1,4 +1,4 @@
-# Day12
+# D12
 
 这道题有很多种做法，但是很遗憾，作为小白只能使用最简单最无脑的做法--直接按层遍历。
 
@@ -15,7 +15,7 @@ typedef struct tree {
   int self;
   int left;
   int right;
-} node;
+} node;// 自己，左子树，右子树
 
 typedef struct queue {
   node data[64];
@@ -44,7 +44,7 @@ int main() {
     scanf("%d %d", &store[i].left, &store[i].right);
   }
   store[0].self = 0;
-  BFS(store, aqueue);
+  BFS(store, aqueue);// real[]里边已经存有各行的结点
   for (int i = 0; i < 30; i++) {
     int store = -1;
     for (int j = 0; j < 15; j++) {
@@ -64,7 +64,7 @@ int main() {
         break;
       }
     }
-  }
+  }// 寻找边界结点
   for (int i = 0; i < 30; i++) {
     if (!realresult[i + 1]) {
       printf("%d", realresult[i]);
@@ -75,28 +75,28 @@ int main() {
   return 0;
 }
 
-void BFS(node store[], queue aqueue) {
+void BFS(node store[], queue aqueue) {// 最基本的按层遍历
   int count1 = 0, count2 = 0;
-  enter_queue(&aqueue, store[1]);
-  enter_queue(&aqueue, store[0]);
+  enter_queue(&aqueue, store[1]);// root 结点
+  enter_queue(&aqueue, store[0]);// 换层标志
   while (!is_empty(aqueue)) {
     node tmp;
-    delete_queue(&aqueue, &tmp);
-    if (tmp.self) {
-      real[count1][count2] = tmp.self;
+    delete_queue(&aqueue, &tmp);// 出队列
+    if (tmp.self) {// 不是换层标志
+      real[count1][count2] = tmp.self;// count1层，第count2个
       count2++;
     } else {
       count2 = 0;
       count1++;
-      if (!is_empty(aqueue)) {
-        enter_queue(&aqueue, store[0]);
+      if (!is_empty(aqueue)) {// 队列没空
+        enter_queue(&aqueue, store[0]);// 换层标志
       }
       continue;
     }
-    if (tmp.left != -1) {
+    if (tmp.left != -1) {// 左子树不空
       enter_queue(&aqueue, store[tmp.left]);
     }
-    if (tmp.right != -1) {
+    if (tmp.right != -1) {// 右子树不空
       enter_queue(&aqueue, store[tmp.right]);
     }
   }
@@ -143,3 +143,4 @@ int is_empty(queue target) {
   return 0;
 }
 ```
+
