@@ -105,7 +105,7 @@ void graph::dijkstra() {
           min * this->matrix[minindex][i] < 0 &&
           (abs(min) + abs(this->matrix[minindex][i])) < abs(this->dis[i])) {
         int tmp = abs(min) + abs(this->matrix[minindex][i]);
-        this->dis[i] = (min > 0) ? -tmp : tmp;// 保持正负号以便判断
+        this->dis[i] = (min > 0) ? -tmp : tmp;// 保持正负号以便判断接下来走向
       }
     }
   }
