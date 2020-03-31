@@ -22,6 +22,15 @@
     ab
     ba
 
-## 样例输出
+### 样例输出
 
     abba
+
+## 某基础的三重积分
+
+设 $\Omega$ 是由 $z = x^2 + y^2, z = 0, xy = 1, xy = 2, y = 3x, y = 4x$ 围成的区域，则积分
+$$
+\iiint\limits_{\Omega} xy
+\mathrm{d}x\mathrm{d}y\mathrm{d}z
+$$
+的值为？
